@@ -93,13 +93,18 @@
     <button class="no-btn" onclick="alert('Hey stupid 😡 Give this to Dr Abinash Sivagurunadhan!')">No</button>
   </div>
 
-   <audio autoplay loop>
+   <audio id="bgm" autoplay loop muted>
     <source src="First-Sight-Bgm-Ringtone.mp3" type="audio/mpeg" />
   </audio>
 
   <!-- particles.js library -->
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
   <script>
+     window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById("bgm").muted = false;
+    }, 500); // unmute after short delay
+  });
     particlesJS("particles-js", {
       particles: {
         number: { value: 80, density: { enable: true, value_area: 800 } },
