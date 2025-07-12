@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Dr</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: linear-gradient(to right, #1e0f1b, #990f02);
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      top: 20%;
+    }
+
+    .real-heart {
+      width: 400px;
+      animation: beat 1s infinite ease-in-out, glow 2s infinite alternate;
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    @keyframes glow {
+      0% { filter: drop-shadow(0 0 10px #ff003c) brightness(1.1); }
+      100% { filter: drop-shadow(0 0 30px #ff006f) brightness(1.5); }
+    }
+
+    .message {
+      margin-top: 30px;
+      font-size: 3em;
+      color: #ffffff;
+      text-shadow: 0 0 10px #ff003c, 0 0 20px #ff006f;
+      animation: fadeIn 2s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Falling Hearts & Petals */
+    .falling {
+      position: absolute;
+      top: -10px;
+      font-size: 24px;
+      animation: fall linear infinite;
+      z-index: 1;
+      user-select: none;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+
+  <div class="container">
+    <img src="C:\Users\afrre\OneDrive\Desktop\wish\human heartt.png" alt="Heart" class="real-heart" />
+    <h1 class="message">Happy Birthday Dr ❤️</h1>
+  </div>
+
+  <!-- Falling hearts & petals -->
+  <script>
+    const emojis = ['❤️','🌸','💖'];
+    for (let i = 0; i < 40; i++) {
+      let span = document.createElement('span');
+      span.classList.add('falling');
+      span.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      span.style.left = Math.random() * 100 + 'vw';
+      span.style.animationDuration = (3 + Math.random() * 5) + 's';
+      span.style.fontSize = (16 + Math.random() * 20) + 'px';
+      span.style.opacity = Math.random();
+      document.body.appendChild(span);
+    }
+  </script>
+
+  <!-- Music -->
+  <audio autoplay loop>
+    <source src="C:\Users\afrre\OneDrive\Desktop\wish\heartbeat-sound-372448.mp3" type="audio/mpeg" />
+  </audio>
+
+  <audio autoplay loop>
+    <source src="C:\Users\afrre\OneDrive\Desktop\wish\Oru-Paarvaiyil-Poo-Koduthai.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- Particles.js -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 60, density: { enable: true, value_area: 800 } },
+        color: { value: "#ffffff" },
+        shape: { type: "circle" },
+        opacity: {
+          value: 0.6,
+          random: true,
+          anim: { enable: true, speed: 1, opacity_min: 0.2, sync: false }
+        },
+        size: {
+          value: 3,
+          random: true,
+          anim: { enable: false }
+        },
+        move: {
+          enable: true,
+          speed: 1.5,
+          random: true,
+          straight: false,
+          bounce: false
+        }
+      },
+      interactivity: {
+        events: {
+          onhover: { enable: true, mode: "repulse" },
+          onclick: { enable: true, mode: "push" }
+        },
+        modes: {
+          repulse: { distance: 100 },
+          push: { particles_nb: 4 }
+        }
+      },
+      retina_detect: true
+    });
+  </script>
+</body>
+</html>
